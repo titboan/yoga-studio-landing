@@ -1,1 +1,444 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>АнандаЙога — студия осознанного движения</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;color:#2d2d2d;background:#faf9f6}a{text-decoration:none}:root{--gold:#c9a96e;--dark:#1e1e1e;--light:#faf9f6;--sage:#7a9e7e}</style></head><body><p>init</p></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>АнандаЙога — студия осознанного движения</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;color:#2d2d2d;background:#faf9f6}
+a{text-decoration:none;color:inherit}
+:root{--gold:#c9a96e;--dark:#1e1e1e;--light:#faf9f6;--sage:#7a9e7e;--cream:#f5f0e8}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(30,30,30,.85);backdrop-filter:blur(8px);display:flex;justify-content:space-between;align-items:center;padding:18px 6%}
+.logo{font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:2px}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.9rem;letter-spacing:1px;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-btn{background:var(--gold);color:#fff!important;padding:8px 20px;border-radius:24px;font-weight:600}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 100%),url('assets/images/hero.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px}
+.hero-inner{max-width:720px}
+.hero-tag{display:inline-block;background:var(--gold);color:#fff;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:24px}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);color:#fff;line-height:1.15;margin-bottom:20px;font-weight:700}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:rgba(255,255,255,.85);font-size:1.15rem;margin-bottom:36px;line-height:1.7}
+.btn{display:inline-block;padding:16px 40px;border-radius:32px;font-size:1rem;font-weight:700;letter-spacing:1px;transition:transform .2s,box-shadow .2s;cursor:pointer}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 8px 24px rgba(201,169,110,.4)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,169,110,.55)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);margin-left:12px}
+.btn-outline:hover{background:rgba(255,255,255,.12)}
+
+/* SECTIONS */
+section{padding:90px 6%}
+.section-label{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:600}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px;line-height:1.2}
+.section-sub{color:#666;font-size:1.05rem;max-width:560px;line-height:1.7}
+.centered{text-align:center;display:flex;flex-direction:column;align-items:center}
+
+/* BENEFITS */
+.benefits{background:var(--cream)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:32px;margin-top:56px}
+.benefit-card{background:#fff;border-radius:20px;padding:36px 28px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s}
+.benefit-card:hover{transform:translateY(-6px)}
+.benefit-icon{width:72px;height:72px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.benefit-icon img{width:42px;height:42px;object-fit:contain}
+.benefit-card h3{font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.benefit-card p{color:#666;font-size:.95rem;line-height:1.6}
+
+/* SCHEDULE */
+.schedule-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px}
+.day-card{background:var(--cream);border-radius:16px;overflow:hidden}
+.day-header{background:var(--dark);color:#fff;padding:14px 22px;font-weight:700;letter-spacing:1px;font-size:.95rem}
+.day-header span{color:var(--gold)}
+.class-item{padding:16px 22px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;justify-content:space-between;align-items:center}
+.class-item:last-child{border-bottom:none}
+.class-name{font-weight:600;font-size:.95rem}
+.class-info{font-size:.82rem;color:#888;margin-top:3px}
+.class-time{font-size:.9rem;font-weight:700;color:var(--gold);text-align:right}
+.class-spots{font-size:.78rem;color:#aaa;margin-top:2px;text-align:right}
+
+/* TRAINERS */
+.trainers{background:var(--cream)}
+.trainers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-top:56px}
+.trainer-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.07);transition:transform .3s}
+.trainer-card:hover{transform:translateY(-6px)}
+.trainer-photo{width:100%;height:280px;object-fit:cover;background:linear-gradient(135deg,var(--sage),var(--gold));display:flex;align-items:center;justify-content:center}
+.trainer-photo-placeholder{width:100%;height:280px;background:linear-gradient(135deg,#7a9e7e22,#c9a96e22);display:flex;align-items:center;justify-content:center;font-size:4rem}
+.trainer-info{padding:24px}
+.trainer-name{font-size:1.15rem;font-weight:700;margin-bottom:6px}
+.trainer-spec{color:var(--gold);font-size:.88rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.trainer-desc{color:#666;font-size:.9rem;line-height:1.6}
+.trainer-exp{display:inline-block;background:var(--cream);border-radius:20px;padding:5px 14px;font-size:.8rem;font-weight:600;margin-top:12px;color:var(--dark)}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:28px;margin-top:56px}
+.review-card{background:#fff;border-radius:20px;padding:32px 28px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.stars{color:var(--gold);font-size:1.1rem;margin-bottom:14px;letter-spacing:2px}
+.review-text{color:#555;line-height:1.7;font-size:.97rem;margin-bottom:20px;font-style:italic}
+.reviewer{display:flex;align-items:center;gap:14px}
+.reviewer-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem}
+.reviewer-name{font-weight:700;font-size:.95rem}
+.reviewer-since{font-size:.82rem;color:#aaa}
+
+/* FORM */
+.booking{background:linear-gradient(135deg,var(--dark) 0%,#2d2d1e 100%);color:#fff}
+.booking .section-title{color:#fff}
+.booking .section-sub{color:rgba(255,255,255,.7)}
+.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px;align-items:start}
+.booking-info h3{font-size:1.3rem;margin-bottom:20px;color:var(--gold)}
+.booking-info ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.booking-info li{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.8);font-size:.97rem}
+.check-icon{width:24px;height:24px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.75rem}
+form{display:flex;flex-direction:column;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+input,select,textarea{width:100%;padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:.95rem;outline:none;transition:border .3s}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.45)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+select option{background:var(--dark);color:#fff}
+textarea{resize:none;height:110px}
+.submit-btn{background:var(--gold);color:#fff;border:none;padding:16px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:1px;transition:transform .2s,box-shadow .2s;margin-top:4px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,169,110,.4)}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,.65);padding:56px 6% 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .logo{font-size:1.3rem;display:block;margin-bottom:14px}
+.footer-brand p{font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.5)}
+.footer-col h4{color:#fff;font-size:.95rem;margin-bottom:16px;font-weight:600}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col li a{font-size:.88rem;transition:color .3s}
+.footer-col li a:hover{color:var(--gold)}
+.footer-contacts p{font-size:.88rem;margin-bottom:8px}
+.footer-contacts a{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.82rem}
+.social-links{display:flex;gap:14px}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:background .3s}
+.social-link:hover{background:var(--gold)}
+
+@media(max-width:768px){
+.nav-links{display:none}
+.btn-outline{display:none}
+.booking-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+.footer-grid{grid-template-columns:1fr}
+section{padding:64px 5%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Ананда<span>Йога</span></div>
+  <ul class="nav-links">
+    <li><a href="#benefits">О нас</a></li>
+    <li><a href="#schedule">Расписание</a></li>
+    <li><a href="#trainers">Тренеры</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#booking" class="nav-btn">Записаться</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">🪷 Студия осознанного движения</span>
+    <h1>Найди <em>гармонию</em><br>внутри себя</h1>
+    <p>Профессиональные тренеры, атмосферные залы и более 30 видов занятий для любого уровня подготовки. Твой путь к балансу начинается здесь.</p>
+    <a href="#booking" class="btn btn-gold">Записаться на пробное</a>
+    <a href="#schedule" class="btn btn-outline">Смотреть расписание</a>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="centered">
+    <div class="section-label">Почему мы</div>
+    <h2 class="section-title">Всё для вашей практики</h2>
+    <p class="section-sub">Создаём пространство, где каждый чувствует себя на месте — от новичка до опытного практика</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon"><img src="assets/images/icon-meditation.png" alt="Медитация" onerror="this.parentNode.innerHTML='🪷'"></div>
+      <h3>Медитация и осознанность</h3>
+      <p>Ежедневные практики для успокоения ума и развития внутреннего фокуса</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><img src="assets/images/icon-classes.png" alt="Занятия" onerror="this.parentNode.innerHTML='🧘'"></div>
+      <h3>30+ направлений йоги</h3>
+      <p>Хатха, виньяса, инь, аштанга, детская йога и специальные программы</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon" style="font-size:2rem">🏛️</div>
+      <h3>Уютные залы с деревянным полом</h3>
+      <p>Четыре зала с профессиональным покрытием, натуральным светом и атмосферой спокойствия</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon" style="font-size:2rem">⭐</div>
+      <h3>Сертифицированные тренеры</h3>
+      <p>Все инструкторы прошли международную сертификацию RYT-200 и RYT-500</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon" style="font-size:2rem">📅</div>
+      <h3>Гибкое расписание</h3>
+      <p>Занятия с 7:00 до 22:00 каждый день — подберём удобное время для вас</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon" style="font-size:2rem">🌿</div>
+      <h3>Пробное занятие бесплатно</h3>
+      <p>Первый урок без оплаты — приходите и убедитесь сами, что это то самое место</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="centered">
+    <div class="section-label">Расписание</div>
+    <h2 class="section-title">Занятия на этой неделе</h2>
+    <p class="section-sub">Выберите удобный день и время — мы ждём вас в любой из наших залов</p>
+  </div>
+  <div class="schedule-wrap">
+    <div class="day-card">
+      <div class="day-header">Понедельник <span>/ ПН</span></div>
+      <div class="class-item"><div><div class="class-name">Хатха йога</div><div class="class-info">Зал 1 · Анна К.</div></div><div><div class="class-time">07:30</div><div class="class-spots">5 мест</div></div></div>
+      <div class="class-item"><div><div class="class-name">Виньяса Flow</div><div class="class-info">Зал 2 · Михаил С.</div></div><div><div class="class-time">10:00</div><div class="class-spots">3 места</div></div></div>
+      <div class="class-item"><div><div class="class-name">Инь йога</div><div class="class-info">Зал 3 · Лена В.</div></div><div><div class="class-time">19:00</div><div class="class-spots">8 мест</div></div></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">Вторник <span>/ ВТ</span></div>
+      <div class="class-item"><div><div class="class-name">Аштанга</div><div class="class-info">Зал 1 · Михаил С.</div></div><div><div class="class-time">08:00</div><div class="class-spots">4 места</div></div></div>
+      <div class="class-item"><div><div class="class-name">Йога для начинающих</div><div class="class-info">Зал 2 · Анна К.</div></div><div><div class="class-time">12:00</div><div class="class-spots">7 мест</div></div></div>
+      <div class="class-item"><div><div class="class-name">Медитация</div><div class="class-info">Зал 4 · Ольга Р.</div></div><div><div class="class-time">20:00</div><div class="class-spots">10 мест</div></div></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">Среда <span>/ СР</span></div>
+      <div class="class-item"><div><div class="class-name">Пренатальная йога</div><div class="class-info">Зал 3 · Лена В.</div></div><div><div class="class-time">09:30</div><div class="class-spots">6 мест</div></div></div>
+      <div class="class-item"><div><div class="class-name">Хатха йога</div><div class="class-info">Зал 1 · Анна К.</div></div><div><div class="class-time">18:00</div><div class="class-spots">2 места</div></div></div>
+      <div class="class-item"><div><div class="class-name">Power Yoga</div><div class="class-info">Зал 2 · Михаил С.</div></div><div><div class="class-time">20:30</div><div class="class-spots">5 мест</div></div></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">Выходные <span>/ СБ-ВС</span></div>
+      <div class="class-item"><div><div class="class-name">Утренняя практика</div><div class="class-info">Зал 1 · Ольга Р.</div></div><div><div class="class-time">08:00</div><div class="class-spots">8 мест</div></div></div>
+      <div class="class-item"><div><div class="class-name">Детская йога</div><div class="class-info">Зал 4 · Лена В.</div></div><div><div class="class-time">11:00</div><div class="class-spots">6 мест</div></div></div>
+      <div class="class-item"><div><div class="class-name">Йога-нидра</div><div class="class-info">Зал 3 · Анна К.</div></div><div><div class="class-time">17:00</div><div class="class-spots">9 мест</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section class="trainers" id="trainers">
+  <div class="centered">
+    <div class="section-label">Команда</div>
+    <h2 class="section-title">Наши тренеры</h2>
+    <p class="section-sub">Сертифицированные инструкторы с многолетним опытом и искренней любовью к практике</p>
+  </div>
+  <div class="trainers-grid">
+    <div class="trainer-card">
+      <div class="trainer-photo-placeholder">🧘‍♀️</div>
+      <div class="trainer-info">
+        <div class="trainer-name">Анна Карпова</div>
+        <div class="trainer-spec">Хатха · Виньяса · Инь</div>
+        <div class="trainer-desc">Основатель студии. Практикует йогу 12 лет, обучалась в Индии у мастеров Айенгара. Ведёт занятия для всех уровней с фокусом на правильное выравнивание.</div>
+        <span class="trainer-exp">🏅 12 лет практики</span>
+      </div>
+    </div>
+    <div class="trainer-card">
+      <div class="trainer-photo-placeholder">🧘‍♂️</div>
+      <div class="trainer-info">
+        <div class="trainer-name">Михаил Соколов</div>
+        <div class="trainer-spec">Аштанга · Power Yoga</div>
+        <div class="trainer-desc">Чемпион России по йоге 2019. Специализируется на динамических и силовых практиках. Его занятия — это вызов и трансформация через движение.</div>
+        <span class="trainer-exp">🏅 8 лет практики</span>
+      </div>
+    </div>
+    <div class="trainer-card">
+      <div class="trainer-photo-placeholder">🌸</div>
+      <div class="trainer-info">
+        <div class="trainer-name">Елена Волкова</div>
+        <div class="trainer-spec">Пренатальная · Детская</div>
+        <div class="trainer-desc">Специалист по работе с особыми категориями практикующих. Нежный и внимательный подход к каждому ученику. Сертификат RYT-500.</div>
+        <span class="trainer-exp">🏅 7 лет практики</span>
+      </div>
+    </div>
+    <div class="trainer-card">
+      <div class="trainer-photo-placeholder">🕊️</div>
+      <div class="trainer-info">
+        <div class="trainer-name">Ольга Романова</div>
+        <div class="trainer-spec">Медитация · Йога-нидра</div>
+        <div class="trainer-desc">Практик буддийской медитации и нейройоги. Её практики помогают снизить стресс и восстановить ресурс. Автор курса «Осознанный сон».</div>
+        <span class="trainer-exp">🏅 10 лет практики</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="centered">
+    <div class="section-label">Отзывы</div>
+    <h2 class="section-title">Что говорят ученики</h2>
+    <p class="section-sub">Более 500 постоянных практиков доверяют нам своё здоровье и гармонию</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Пришла впервые год назад — боялась, что не потяну. Анна так мягко и профессионально всё объяснила, что я влюбилась в практику с первого занятия. Теперь хожу 4 раза в неделю!»</p>
+      <div class="reviewer"><div class="reviewer-avatar">М</div><div><div class="reviewer-name">Марина Д.</div><div class="reviewer-since">Практикует 1 год</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Занятия с Михаилом — это огонь! Думал, что йога — это медленно и скучно. Был полностью неправ. Power Yoga дала мне силу и гибкость, которой не было за годы в тренажёрке.»</p>
+      <div class="reviewer"><div class="reviewer-avatar">А</div><div><div class="reviewer-name">Алексей В.</div><div class="reviewer-since">Практикует 8 месяцев</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Пренатальная йога с Леной помогла мне легко пройти всю беременность. Особая атмосфера, внимание и забота о каждой. Продолжаю заниматься уже с малышом.»</p>
+      <div class="reviewer"><div class="reviewer-avatar">Е</div><div><div class="reviewer-name">Екатерина С.</div><div class="reviewer-since">Практикует 2 года</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Медитации Ольги — это что-то невероятное. После курса йога-нидры качество сна изменилось кардинально. Стресс на работе ощущается иначе. Рекомендую всем коллегам.»</p>
+      <div class="reviewer"><div class="reviewer-avatar">И</div><div><div class="reviewer-name">Иван Т.</div><div class="reviewer-since">Практикует 6 месяцев</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Записала дочку на детскую йогу — она в восторге! Лена умеет найти подход к детям, занятия игровые и интересные. Дочь стала спокойнее и внимательнее в школе.»</p>
+      <div class="reviewer"><div class="reviewer-avatar">Н</div><div><div class="reviewer-name">Наталья К.</div><div class="reviewer-since">Практикует 5 месяцев</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Залы — просто мечта. Деревянный пол, натуральный свет, запах благовоний. Сразу понимаешь, что попал куда надо. Атмосфера студии уже сама по себе лечит.»</p>
+      <div class="reviewer"><div class="reviewer-avatar">С</div><div><div class="reviewer-name">Светлана О.</div><div class="reviewer-since">Практикует 1.5 года</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="booking" id="booking">
+  <div class="centered">
+    <div class="section-label">Запись</div>
+    <h2 class="section-title">Начните практику сегодня</h2>
+    <p class="section-sub">Первое занятие бесплатно — оставьте заявку и мы свяжемся с вами в течение часа</p>
+  </div>
+  <div class="booking-grid">
+    <div class="booking-info">
+      <h3>Что вас ждёт</h3>
+      <ul>
+        <li><div class="check-icon">✓</div>Персональный подбор направления</li>
+        <li><div class="check-icon">✓</div>Знакомство с тренером и студией</li>
+        <li><div class="check-icon">✓</div>Полный инвентарь включён</li>
+        <li><div class="check-icon">✓</div>Чай и спокойная беседа после</li>
+        <li><div class="check-icon">✓</div>Специальная цена на абонемент</li>
+        <li><div class="check-icon">✓</div>Без обязательств — просто попробуйте</li>
+      </ul>
+    </div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="tel" placeholder="Телефон" required>
+      </div>
+      <input type="email" placeholder="Email">
+      <select required>
+        <option value="" disabled selected>Выберите направление</option>
+        <option>Хатха йога</option>
+        <option>Виньяса Flow</option>
+        <option>Аштанга</option>
+        <option>Инь йога</option>
+        <option>Power Yoga</option>
+        <option>Медитация</option>
+        <option>Пренатальная йога</option>
+        <option>Детская йога</option>
+        <option>Йога-нидра</option>
+        <option>Не знаю — помогите выбрать</option>
+      </select>
+      <div class="form-row">
+        <select>
+          <option value="" disabled selected>Удобное время</option>
+          <option>Утро 7:00–10:00</option>
+          <option>День 10:00–17:00</option>
+          <option>Вечер 17:00–22:00</option>
+        </select>
+        <select>
+          <option value="" disabled selected>Ваш уровень</option>
+          <option>Новичок</option>
+          <option>Начинающий</option>
+          <option>Средний</option>
+          <option>Продвинутый</option>
+        </select>
+      </div>
+      <textarea placeholder="Есть вопросы или пожелания? Напишите нам"></textarea>
+      <button type="submit" class="submit-btn">🪷 Записаться на бесплатное занятие</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Ананда<span style="color:var(--gold)">Йога</span></span>
+      <p>Студия осознанного движения в центре города. Мы помогаем людям обрести гармонию тела и ума через практику йоги с 2018 года.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Направления</h4>
+      <ul>
+        <li><a href="#schedule">Хатха йога</a></li>
+        <li><a href="#schedule">Виньяса Flow</a></li>
+        <li><a href="#schedule">Аштанга</a></li>
+        <li><a href="#schedule">Медитация</a></li>
+        <li><a href="#schedule">Детская йога</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Студия</h4>
+      <ul>
+        <li><a href="#trainers">Тренеры</a></li>
+        <li><a href="#schedule">Расписание</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#booking">Пробное занятие</a></li>
+        <li><a href="#">Абонементы</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contacts">
+      <h4>Контакты</h4>
+      <p>📍 ул. Садовая, 12, Москва</p>
+      <p>📞 <a href="tel:+74951234567">+7 495 123-45-67</a></p>
+      <p>✉️ <a href="mailto:hello@anandayoga.ru">hello@anandayoga.ru</a></p>
+      <p style="margin-top:12px;font-size:.82rem;color:rgba(255,255,255,.4)">Пн–Вс: 7:00 – 22:00</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 АнандаЙога. Все права защищены.</span>
+    <div class="social-links">
+      <a href="#" class="social-link">VK</a>
+      <a href="#" class="social-link">TG</a>
+      <a href="#" class="social-link">IG</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.submit-btn');
+  btn.textContent='✅ Заявка отправлена! Скоро свяжемся';
+  btn.style.background='var(--sage)';
+  btn.disabled=true;
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>
